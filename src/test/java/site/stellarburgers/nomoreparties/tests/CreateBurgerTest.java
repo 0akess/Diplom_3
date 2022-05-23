@@ -9,7 +9,7 @@ import site.stellarburgers.nomoreparties.page.object.CreateBurgerPage;
 import static site.stellarburgers.nomoreparties.BaseURL.MAINE_URL;
 
 
-@DisplayName("Сьют на создания бургера")
+@DisplayName("Сьют на создание бургера")
 public class CreateBurgerTest extends BaseTest {
 
     private static final CreateBurgerPage createBurger = Selenide.page(CreateBurgerPage.class);
