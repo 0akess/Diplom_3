@@ -1,7 +1,7 @@
 package site.stellarburgers.nomoreparties;
 
 public class BaseURL {
-    public static final String MAINE_URL = "https://stellarburgers.nomoreparties.site/";
+    public static final String MAIN_URL = "https://stellarburgers.nomoreparties.site/";
     public static final String ORDER_FEED_URL = "https://stellarburgers.nomoreparties.site/feed";
     public static final String ACCOUNT_PROFILE_URL = "https://stellarburgers.nomoreparties.site/account/profile";
     public static final String ACCOUNT_ORDER_HISTORY_URL = "https://stellarburgers.nomoreparties.site/account/order-history";

@@ -1,11 +1,8 @@
-package site.stellarburgers.nomoreparties.tests;
-
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import site.stellarburgers.nomoreparties.BaseTest;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.AccountProfilePage;
 import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
@@ -13,10 +10,9 @@ import site.stellarburgers.nomoreparties.respons.model.User;
 import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
 import site.stellarburgers.nomoreparties.respons.user.PostRegister;
 
+import static site.stellarburgers.nomoreparties.BaseURL.LOGIN_URL;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
-import static site.stellarburgers.nomoreparties.BaseURL.LOGIN_URL;
-
 
 @DisplayName("Сьют на личный кабинет пользователя")
 public class AccountProfileTest extends BaseTest {
@@ -29,7 +25,7 @@ public class AccountProfileTest extends BaseTest {
     private static final AccountProfilePage profilePage = page(AccountProfilePage.class);
 
     @Before
-    @DisplayName("Создаем пользователя для тетсов")
+    @DisplayName("Создаем пользователя для тестов и авторизовываемся")
     public void startTest() {
         token = new PostRegister().registerUser(new User(email, password, name))
                 .statusCode(HttpStatus.SC_OK)
@@ -47,7 +43,6 @@ public class AccountProfileTest extends BaseTest {
         new DeleteUser().deleteUser(token)
                 .statusCode(HttpStatus.SC_ACCEPTED);
     }
-
 
     @Test
     @DisplayName("Проверка перехода в Личный кабинет пользователя")

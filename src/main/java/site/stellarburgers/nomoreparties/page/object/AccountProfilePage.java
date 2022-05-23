@@ -4,10 +4,10 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import static org.junit.Assert.assertEquals;
 import static site.stellarburgers.nomoreparties.BaseURL.*;
 
 public class AccountProfilePage {
@@ -52,22 +52,22 @@ public class AccountProfilePage {
     @Step("проверка успешного перехода в Личный кабинет")
     public AccountProfilePage checkItIsPersonalAccountPage(){
         Selenide.sleep(1000);
-        assertEquals("Вы не перешли на страницу личного кабинета",
+        Assert.assertEquals("Вы не перешли на страницу личного кабинета",
                 ACCOUNT_PROFILE_URL, WebDriverRunner.url());
         return this;
     }
 
     @Step("проверка успешного перехода на Главную страницу")
     public AccountProfilePage checkItIsMainePage(){
-        assertEquals("Вы не перешли на сглавную страницу",
-                MAINE_URL, WebDriverRunner.url());
+        Assert.assertEquals("Вы не перешли на сглавную страницу",
+                MAIN_URL, WebDriverRunner.url());
         return this;
     }
 
     @Step("проверка успешного выхода из аккаунта")
     public AccountProfilePage checkItIsLoginPage(){
         Selenide.sleep(1000);
-        assertEquals("Вы не вышли из аккаунта",
+        Assert.assertEquals("Вы не вышли из аккаунта",
                 LOGIN_URL, WebDriverRunner.url());
         return this;
     }

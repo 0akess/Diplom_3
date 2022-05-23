@@ -1,12 +1,9 @@
-package site.stellarburgers.nomoreparties.tests;
-
+import site.stellarburgers.nomoreparties.BaseURL;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import site.stellarburgers.nomoreparties.BaseTest;
-import site.stellarburgers.nomoreparties.BaseURL;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
 import site.stellarburgers.nomoreparties.respons.model.User;
@@ -14,7 +11,6 @@ import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
 import site.stellarburgers.nomoreparties.respons.user.PostRegister;
 
 import static com.codeborne.selenide.Selenide.page;
-
 
 @DisplayName("Сьют на авторизацию пользователя")
 public class AuthorizationTest extends BaseTest {
@@ -27,7 +23,7 @@ public class AuthorizationTest extends BaseTest {
     private static final AuthorizationPage authorizationPage = page(AuthorizationPage.class);
 
     @Before
-    @DisplayName("Создаем пользователя для тетсов")
+    @DisplayName("Создаем пользователя для тестов")
     public void startTest() {
         token = new PostRegister().registerUser(new User(email, password, name))
                 .statusCode(HttpStatus.SC_OK)
@@ -45,7 +41,7 @@ public class AuthorizationTest extends BaseTest {
     @DisplayName("Проверка авторизации со стартом с кнопки Войти в аккаунт на главной")
     public void authorizationButtonEntryToAccount() {
         authorizationPage
-                .openPage(BaseURL.MAINE_URL)
+                .openPage(BaseURL.MAIN_URL)
                 .clickEntryToMainePage()
                 .setValueEmail(email)
                 .setValuePassword(password)
@@ -57,7 +53,7 @@ public class AuthorizationTest extends BaseTest {
     @DisplayName("Проверка авторизации со стартом с кнопки Личный кабинет на главной")
     public void authorizationButtonPersonalAccount() {
         authorizationPage
-                .openPage(BaseURL.MAINE_URL)
+                .openPage(BaseURL.MAIN_URL)
                 .clickPersonalAccount()
                 .setValueEmail(email)
                 .setValuePassword(password)

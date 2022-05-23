@@ -1,18 +1,14 @@
-package site.stellarburgers.nomoreparties.tests;
-
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
 import org.junit.AfterClass;
 import org.junit.Test;
-import site.stellarburgers.nomoreparties.BaseTest;
 import site.stellarburgers.nomoreparties.BaseURL;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.RegistrationPage;
 import site.stellarburgers.nomoreparties.respons.model.User;
 import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
 import site.stellarburgers.nomoreparties.respons.user.PostLoginUser;
-
 
 @DisplayName("Сьют на регистрацию пользователя")
 public class RegistrationTests extends BaseTest {

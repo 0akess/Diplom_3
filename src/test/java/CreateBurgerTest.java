@@ -1,13 +1,9 @@
-package site.stellarburgers.nomoreparties.tests;
-
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
-import site.stellarburgers.nomoreparties.BaseTest;
 import site.stellarburgers.nomoreparties.page.object.CreateBurgerPage;
 
-import static site.stellarburgers.nomoreparties.BaseURL.MAINE_URL;
-
+import static site.stellarburgers.nomoreparties.BaseURL.MAIN_URL;
 
 @DisplayName("Сьют на создание бургера")
 public class CreateBurgerTest extends BaseTest {
@@ -18,7 +14,7 @@ public class CreateBurgerTest extends BaseTest {
     @DisplayName("Проверка перехода в раздел Булки")
     public void checkGoSectionBun(){
         createBurger
-                .openPage(MAINE_URL)
+                .openPage(MAIN_URL)
                 .clickFilling()
                 .clickBun()
                 .isBunSelected();
@@ -28,7 +24,7 @@ public class CreateBurgerTest extends BaseTest {
     @DisplayName("Проверка перехода в раздел Соусы")
     public void checkGoSectionSauce(){
         createBurger
-                .openPage(MAINE_URL)
+                .openPage(MAIN_URL)
                 .clickSauce()
                 .isSauceSelected();
     }
@@ -37,7 +33,7 @@ public class CreateBurgerTest extends BaseTest {
     @DisplayName("Проверка перехода в раздел Начинки")
     public void checkGoSectionFilling(){
         createBurger
-                .openPage(MAINE_URL)
+                .openPage(MAIN_URL)
                 .clickFilling()
                 .isFillingSelected();
     }
