@@ -1,8 +1,8 @@
-import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.AccountProfilePage;
 import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
@@ -24,7 +24,7 @@ public class AccountProfileTest extends BaseTest {
     private static final String name = data.getNameUser();
     private static final AccountProfilePage profilePage = page(AccountProfilePage.class);
 
-    @Before
+    @BeforeEach
     @DisplayName("Создаем пользователя для тестов и авторизовываемся")
     public void startTest() {
         token = new PostRegister().registerUser(new User(email, password, name))
@@ -37,7 +37,7 @@ public class AccountProfileTest extends BaseTest {
                 .clickLogInToTheSite();
     }
 
-    @After
+    @AfterEach
     @DisplayName("Удаляем тестового пользователя")
     public void endTests() {
         new DeleteUser().deleteUser(token)

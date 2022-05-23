@@ -1,9 +1,9 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.BaseURL;
-import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
 import site.stellarburgers.nomoreparties.respons.model.User;
@@ -22,7 +22,7 @@ public class AuthorizationTest extends BaseTest {
     private static final String name = data.getNameUser();
     private static final AuthorizationPage authorizationPage = page(AuthorizationPage.class);
 
-    @Before
+    @BeforeEach
     @DisplayName("Создаем пользователя для тестов")
     public void startTest() {
         token = new PostRegister().registerUser(new User(email, password, name))
@@ -30,7 +30,7 @@ public class AuthorizationTest extends BaseTest {
                 .extract().path("accessToken");
     }
 
-    @After
+    @AfterEach
     @DisplayName("Удаляем тестового пользователя")
     public void endTests() {
         new DeleteUser().deleteUser(token)
