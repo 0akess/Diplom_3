@@ -4,14 +4,16 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
-import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static site.stellarburgers.nomoreparties.BaseURL.*;
 
 public class AccountProfilePage {
 
+    // для чего: https://ru.stackoverflow.com/questions/1155809/Разница-между-findby-и-findelements
     @FindBy(how = How.XPATH, using = "//p[text()='Личный Кабинет']")
     private SelenideElement buttonPersonalAccount;
 
@@ -25,6 +27,7 @@ public class AccountProfilePage {
     private SelenideElement buttonLogOut;
 
 
+    //  @Step - штука для алюра
     @Step("нажатие на кнопку Stellar Burgers")
     public AccountProfilePage clickStellarBurgers(){
         buttonStellarBurgers.click();
@@ -52,23 +55,23 @@ public class AccountProfilePage {
     @Step("проверка успешного перехода в Личный кабинет")
     public AccountProfilePage checkItIsPersonalAccountPage(){
         Selenide.sleep(1000);
-        Assert.assertEquals("Вы не перешли на страницу личного кабинета",
-                ACCOUNT_PROFILE_URL, WebDriverRunner.url());
+        assertEquals(ACCOUNT_PROFILE_URL, WebDriverRunner.url(),
+                "Вы не перешли на страницу личного кабинета");
         return this;
     }
 
     @Step("проверка успешного перехода на Главную страницу")
     public AccountProfilePage checkItIsMainePage(){
-        Assert.assertEquals("Вы не перешли на сглавную страницу",
-                MAIN_URL, WebDriverRunner.url());
+        assertEquals(MAIN_URL, WebDriverRunner.url(),
+                "Вы не перешли на сглавную страницу");
         return this;
     }
 
     @Step("проверка успешного выхода из аккаунта")
     public AccountProfilePage checkItIsLoginPage(){
         Selenide.sleep(1000);
-        Assert.assertEquals("Вы не вышли из аккаунта",
-                LOGIN_URL, WebDriverRunner.url());
+        assertEquals(LOGIN_URL, WebDriverRunner.url(),
+                "Вы не вышли из аккаунта");
         return this;
     }
 }

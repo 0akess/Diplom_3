@@ -1,8 +1,8 @@
 import com.codeborne.selenide.Selenide;
-import io.qameta.allure.junit4.DisplayName;
 import org.apache.http.HttpStatus;
-import org.junit.AfterClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.BaseURL;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.RegistrationPage;
@@ -18,7 +18,7 @@ public class RegistrationTests extends BaseTest {
     private static final String email = data.getEmailUser();
     private static final String password = data.getPasswordUser(7);
 
-    @AfterClass
+    @AfterAll
     @DisplayName("Удаляем тестового пользователя")
     public static void endTests() {
         try {

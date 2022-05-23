@@ -1,6 +1,6 @@
 import com.codeborne.selenide.Selenide;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.page.object.CreateBurgerPage;
 
 import static site.stellarburgers.nomoreparties.BaseURL.MAIN_URL;
