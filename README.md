@@ -1,4 +1,4 @@
-# Diplom_3
+# Selenide Allure
 
 посмотреть отчет аллюр:
 - выполнить команду mvn cleane test
