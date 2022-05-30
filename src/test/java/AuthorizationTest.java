@@ -25,7 +25,7 @@ public class AuthorizationTest extends BaseTest {
     @BeforeEach
     @DisplayName("Создаем пользователя для тестов")
     public void startTest() {
-        token = new PostRegister().registerUser(new User(email, password, name))
+        token = new PostRegister().registerUser(new User().builder().email(email).password(password).name(name).build())
                 .statusCode(HttpStatus.SC_OK)
                 .extract().path("accessToken");
     }

@@ -7,6 +7,7 @@ import site.stellarburgers.nomoreparties.data.tests.GetUserData;
 import site.stellarburgers.nomoreparties.page.object.AccountProfilePage;
 import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
 import site.stellarburgers.nomoreparties.respons.model.User;
+import site.stellarburgers.nomoreparties.respons.model.User.UserBuilder;
 import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
 import site.stellarburgers.nomoreparties.respons.user.PostRegister;
 
@@ -27,7 +28,7 @@ public class AccountProfileTest extends BaseTest {
     @BeforeEach
     @DisplayName("Создаем пользователя для тестов и авторизовываемся")
     public void startTest() {
-        token = new PostRegister().registerUser(new User(email, password, name))
+        token = new PostRegister().registerUser(new User().builder().email(email).password(password).name(name).build())
                 .statusCode(HttpStatus.SC_OK)
                 .extract().path("accessToken");
 

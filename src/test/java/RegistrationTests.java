@@ -23,7 +23,7 @@ public class RegistrationTests extends BaseTest {
     public static void endTests() {
         try {
             new DeleteUser()
-                    .deleteUser(new PostLoginUser().loginUser(new User(email, password))
+                    .deleteUser(new PostLoginUser().loginUser(new User().builder().email(email).password(password).build())
                             .extract().path("accessToken"))
                     .statusCode(HttpStatus.SC_ACCEPTED);
         }catch (IllegalArgumentException e){
