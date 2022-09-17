@@ -4,15 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
-import site.stellarburgers.nomoreparties.page.object.AccountProfilePage;
-import site.stellarburgers.nomoreparties.page.object.AuthorizationPage;
-import site.stellarburgers.nomoreparties.respons.model.User;
-import site.stellarburgers.nomoreparties.respons.model.User.UserBuilder;
-import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
-import site.stellarburgers.nomoreparties.respons.user.PostRegister;
+import site.stellarburgers.nomoreparties.pages.AccountProfilePage;
+import site.stellarburgers.nomoreparties.pages.AuthorizationPage;
+import site.stellarburgers.nomoreparties.request.model.User;
+import site.stellarburgers.nomoreparties.request.user.DeleteUser;
+import site.stellarburgers.nomoreparties.request.user.PostRegister;
+import site.stellarburgers.nomoreparties.resources.BaseURL;
 
-import static site.stellarburgers.nomoreparties.BaseURL.LOGIN_URL;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
 @DisplayName("Сьют на личный кабинет пользователя")
@@ -28,11 +26,16 @@ public class AccountProfileTest extends BaseTest {
     @BeforeEach
     @DisplayName("Создаем пользователя для тестов и авторизовываемся")
     public void startTest() {
-        token = new PostRegister().registerUser(new User().builder().email(email).password(password).name(name).build())
+        token = new PostRegister().registerUser(new User().builder()
+                        .email(email)
+                        .password(password)
+                        .name(name)
+                        .build())
                 .statusCode(HttpStatus.SC_OK)
                 .extract().path("accessToken");
 
-        open(LOGIN_URL, AuthorizationPage.class)
+        page(AuthorizationPage.class)
+                .open(BaseURL.LOGIN_URL)
                 .setValueEmail(email)
                 .setValuePassword(password)
                 .clickLogInToTheSite();
@@ -49,7 +52,7 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка перехода в Личный кабинет пользователя")
     public void checkClickThroughToAccountProfile() {
         profilePage
-                .clickPersonalAccount()
+                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
                 .checkItIsPersonalAccountPage();
     }
 
@@ -57,25 +60,25 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка перехода из Личного кабинета на главную по кнопке Конструктор")
     public void checkClickThroughToConstructor() {
         profilePage
-                .clickPersonalAccount()
+                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
                 .clickConstructor()
-                .checkItIsMainePage();
+                .checkItIsMainPage();
     }
 
     @Test
     @DisplayName("Проверка перехода из Личного кабинета на главную по кнопке Stellar Burgers")
     public void checkClickThroughToStellarBurgers() {
         profilePage
-                .clickPersonalAccount()
+                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
                 .clickStellarBurgers()
-                .checkItIsMainePage();
+                .checkItIsMainPage();
     }
 
     @Test
     @DisplayName("Проверка выхода из Личного кабинета пользователя")
     public void checkLogOutProfile() {
         profilePage
-                .clickPersonalAccount()
+                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
                 .clickLogOut()
                 .checkItIsLoginPage();
     }
