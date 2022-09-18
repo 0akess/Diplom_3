@@ -1,45 +1,35 @@
 package site.stellarburgers.nomoreparties.pages;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.By;
 import site.stellarburgers.nomoreparties.resources.BaseURL;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
 
 public class BaseMethodPage<T> {
 
-//    private final T T;
-    @FindBy(how = How.XPATH, using = "//p[text()='Личный Кабинет']")
-    private SelenideElement buttonPersonalAccount;
-
-    @FindBy(how = How.XPATH, using = "//*[text()='Конструктор']")
-    private SelenideElement buttonConstructor;
-
-    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__logo__2D0X2")
-    private SelenideElement buttonStellarBurgers;
-
-
-    public T open(BaseURL url){
+    public T open(BaseURL url) {
         Selenide.open(url.getUrl());
         return (T) this;
     }
 
     @Step("нажатие на кнопку Личный Кабинет")
-    public static <E> E clickPersonalAccount(Personal personal) {
-//        buttonPersonalAccount.click();
-        return (E) personal.o();
+    public static <PersonalAccount extends Personal> PersonalAccount clickPersonalAccount(Class<PersonalAccount> personal) {
+        $(By.linkText("Личный Кабинет")).click();
+        return page(personal);
     }
 
     @Step("нажатие на кнопку Конструктор")
-    public CreateBurgerPage clickConstructor(){
-        buttonConstructor.click();
-        return new CreateBurgerPage();
+    public CreateBurgerPage clickConstructor() {
+        $(By.linkText("Конструктор")).click();
+        return page(CreateBurgerPage.class);
     }
 
     @Step("нажатие на кнопку Stellar Burgers")
-    public CreateBurgerPage clickStellarBurgers(){
-        buttonStellarBurgers.click();
-        return new CreateBurgerPage();
+    public CreateBurgerPage clickStellarBurgers() {
+        $(By.className("AppHeader_header__logo__2D0X2")).click();
+        return page(CreateBurgerPage.class);
     }
 }

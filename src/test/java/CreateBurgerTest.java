@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import site.stellarburgers.nomoreparties.pages.AuthorizationPage;
 import site.stellarburgers.nomoreparties.pages.CreateBurgerPage;
 import site.stellarburgers.nomoreparties.resources.BaseURL;
 
@@ -25,7 +26,12 @@ public class CreateBurgerTest extends BaseTest {
         createBurger
                 .open(BaseURL.MAIN_URL)
                 .clickSauce()
-                .isSauceSelected();
+                .isSauceSelected()
+                .clickPersonalAccount(AuthorizationPage.class)
+                .setValueEmail("test")
+                .clickConstructor()
+                .checkItIsMainPage()
+                .clickPersonalAccount(AuthorizationPage.class);
     }
 
     @Test

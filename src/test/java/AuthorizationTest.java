@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import site.stellarburgers.nomoreparties.pages.AccountProfilePage;
+import site.stellarburgers.nomoreparties.pages.CreateBurgerPage;
 import site.stellarburgers.nomoreparties.resources.BaseURL;
 import org.apache.http.HttpStatus;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
@@ -46,7 +47,7 @@ public class AuthorizationTest extends BaseTest {
     @Test
     @DisplayName("Проверка авторизации со стартом с кнопки Войти в аккаунт на главной")
     public void authorizationButtonEntryToAccount() {
-        new AuthorizationPage()
+        authorizationPage
                 .open(BaseURL.MAIN_URL)
                 .clickEntryToMainePage()
                 .setValueEmail(email)
@@ -60,7 +61,7 @@ public class AuthorizationTest extends BaseTest {
     public void authorizationButtonPersonalAccount() {
         authorizationPage
                 .open(BaseURL.MAIN_URL)
-                .<AuthorizationPage>clickPersonalAccount(new AuthorizationPage())
+                .clickPersonalAccount(AuthorizationPage.class)
                 .setValueEmail(email)
                 .setValuePassword(password)
                 .clickLogInToTheSite()

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 
+import static com.codeborne.selenide.Selenide.page;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static site.stellarburgers.nomoreparties.resources.BaseURL.*;
 
@@ -19,7 +20,7 @@ public class AccountProfilePage extends BaseMethodPage<AccountProfilePage> imple
     @Step("нажатие на кнопку Выйти")
     public AuthorizationPage clickLogOut(){
         buttonLogOut.click();
-        return new AuthorizationPage();
+        return page(AuthorizationPage.class);
     }
 
     // Вариант проверки по урлу

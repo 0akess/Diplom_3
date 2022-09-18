@@ -16,14 +16,14 @@ abstract public class BaseTest {
 //        WebDriverManager.safaridriver().setup();
 //        Configuration.browser = "safari";
 
-        WebDriverManager.firefoxdriver().setup();
-        Configuration.browser = "firefox";
+//        WebDriverManager.firefoxdriver().setup();
+//        Configuration.browser = "firefox";
 
         Configuration.browserSize = "1920x1080";
 
         // запускать ли браузер, чтоб что-то бегало на экране?
         // если тру - то не запустит
-//        Configuration.headless = true;
+        Configuration.headless = true;
 
         // штука для аллюра, показывает все шаги, советую запустить
         // аллюр и поглядеть как там все круто выглядит

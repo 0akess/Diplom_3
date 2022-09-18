@@ -52,7 +52,7 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка перехода в Личный кабинет пользователя")
     public void checkClickThroughToAccountProfile() {
         profilePage
-                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
+                .clickPersonalAccount(AccountProfilePage.class)
                 .checkItIsPersonalAccountPage();
     }
 
@@ -60,7 +60,7 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка перехода из Личного кабинета на главную по кнопке Конструктор")
     public void checkClickThroughToConstructor() {
         profilePage
-                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
+                .clickPersonalAccount(AccountProfilePage.class)
                 .clickConstructor()
                 .checkItIsMainPage();
     }
@@ -69,7 +69,7 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка перехода из Личного кабинета на главную по кнопке Stellar Burgers")
     public void checkClickThroughToStellarBurgers() {
         profilePage
-                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
+                .clickPersonalAccount(AccountProfilePage.class)
                 .clickStellarBurgers()
                 .checkItIsMainPage();
     }
@@ -78,7 +78,7 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка выхода из Личного кабинета пользователя")
     public void checkLogOutProfile() {
         profilePage
-                .<AccountProfilePage>clickPersonalAccount(new AccountProfilePage())
+                .clickPersonalAccount(AccountProfilePage.class)
                 .clickLogOut()
                 .checkItIsLoginPage();
     }
