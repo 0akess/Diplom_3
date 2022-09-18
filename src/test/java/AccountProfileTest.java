@@ -16,12 +16,12 @@ import static com.codeborne.selenide.Selenide.page;
 @DisplayName("Сьют на личный кабинет пользователя")
 public class AccountProfileTest extends BaseTest {
 
-    private static String token;
-    private static final GetUserData data = new GetUserData();
-    private static final String email = data.getEmailUser();
-    private static final String password = data.getPasswordUser(7);
-    private static final String name = data.getNameUser();
-    private static final AccountProfilePage profilePage = page(AccountProfilePage.class);
+    private String token;
+    private final GetUserData data = new GetUserData();
+    private final String email = data.getEmailUser();
+    private final String password = data.getPasswordUser(7);
+    private final String name = data.getNameUser();
+    private AccountProfilePage profilePage = page(AccountProfilePage.class);
 
     @BeforeEach
     @DisplayName("Создаем пользователя для тестов и авторизовываемся")

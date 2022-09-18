@@ -17,11 +17,11 @@ import static com.codeborne.selenide.Selenide.page;
 @DisplayName("Сьют на авторизацию пользователя")
 public class AuthorizationTest extends BaseTest {
 
-    private static String token;
-    private static final GetUserData data = new GetUserData();
+    private String token;
+    private final GetUserData data = new GetUserData();
     private String email = data.getEmailUser();
     private String password = data.getPasswordUser(7);
-    private  String name = data.getNameUser();
+    private String name = data.getNameUser();
     private AuthorizationPage authorizationPage = page(AuthorizationPage.class);
 
     @BeforeEach

@@ -8,7 +8,7 @@ import site.stellarburgers.nomoreparties.resources.BaseURL;
 @DisplayName("Сьют на создание бургера")
 public class CreateBurgerTest extends BaseTest {
 
-    private static final CreateBurgerPage createBurger = Selenide.page(CreateBurgerPage.class);
+    private final CreateBurgerPage createBurger = Selenide.page(CreateBurgerPage.class);
 
     @Test
     @DisplayName("Проверка перехода в раздел Булки")
