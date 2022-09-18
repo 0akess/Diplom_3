@@ -1,14 +1,18 @@
-package site.stellarburgers.nomoreparties.page.object;
+package site.stellarburgers.nomoreparties.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static site.stellarburgers.nomoreparties.resources.BaseURL.LOGIN_URL;
 
-public class RegistrationPage {
+
+public class RegistrationPage extends BaseMethodPage<RegistrationPage> {
 
     @FindBy(how = How.XPATH, using = "//*[text()='Имя']/following-sibling::*")
     private SelenideElement inputName;
@@ -27,13 +31,6 @@ public class RegistrationPage {
 
     @FindBy(how = How.XPATH, using = "//*[text()='Некорректный пароль']")
     private SelenideElement errorPassword;
-
-
-    @Step("переход по ссылке")
-    public RegistrationPage openPage(String url) {
-        Selenide.open(url);
-        return this;
-    }
 
     @Step("нажатие на кнопку Зарегистрироваться")
     public RegistrationPage clickRegister() {

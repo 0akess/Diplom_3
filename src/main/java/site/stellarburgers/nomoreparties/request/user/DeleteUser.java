@@ -1,7 +1,7 @@
-package site.stellarburgers.nomoreparties.respons.user;
+package site.stellarburgers.nomoreparties.request.user;
 
 import io.restassured.response.ValidatableResponse;
-import site.stellarburgers.nomoreparties.respons.BaseSpecForRequest;
+import site.stellarburgers.nomoreparties.request.BaseSpecForRequest;
 
 import static io.restassured.RestAssured.given;
 

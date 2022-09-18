@@ -3,12 +3,12 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import site.stellarburgers.nomoreparties.BaseURL;
+import site.stellarburgers.nomoreparties.resources.BaseURL;
 import site.stellarburgers.nomoreparties.data.tests.GetUserData;
-import site.stellarburgers.nomoreparties.page.object.RegistrationPage;
-import site.stellarburgers.nomoreparties.respons.model.User;
-import site.stellarburgers.nomoreparties.respons.user.DeleteUser;
-import site.stellarburgers.nomoreparties.respons.user.PostLoginUser;
+import site.stellarburgers.nomoreparties.pages.RegistrationPage;
+import site.stellarburgers.nomoreparties.request.model.User;
+import site.stellarburgers.nomoreparties.request.user.DeleteUser;
+import site.stellarburgers.nomoreparties.request.user.PostLoginUser;
 
 @DisplayName("Сьют на регистрацию пользователя")
 public class RegistrationTests extends BaseTest {
@@ -35,7 +35,7 @@ public class RegistrationTests extends BaseTest {
     @DisplayName("Проверка формы регистрации")
     public void positiveRegistrationUser() {
         registration
-                .openPage(BaseURL.REGISTRATION_URl)
+                .open(BaseURL.REGISTRATION_URl)
                 .setValueName(data.getNameUser())
                 .setValueEmail(email)
                 .setValuePassword(password)
@@ -47,7 +47,7 @@ public class RegistrationTests extends BaseTest {
     @DisplayName("Проверка регистрации - ошибка при вводе пароля меньше 6 цифр")
     public void checkErrorMessagePassword() {
         registration
-                .openPage(BaseURL.REGISTRATION_URl)
+                .open(BaseURL.REGISTRATION_URl)
                 .setValueName(data.getNameUser())
                 .setValueEmail(data.getEmailUser())
                 .setValuePassword(data.getPasswordUser(5))

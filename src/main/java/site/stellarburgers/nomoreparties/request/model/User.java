@@ -1,4 +1,4 @@
-package site.stellarburgers.nomoreparties.respons.model;
+package site.stellarburgers.nomoreparties.request.model;
 
 import lombok.*;
 

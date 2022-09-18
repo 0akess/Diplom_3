@@ -1,4 +1,4 @@
-package site.stellarburgers.nomoreparties.respons;
+package site.stellarburgers.nomoreparties.request;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;

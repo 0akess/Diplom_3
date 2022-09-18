@@ -1,20 +1,20 @@
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import site.stellarburgers.nomoreparties.page.object.CreateBurgerPage;
-
-import static site.stellarburgers.nomoreparties.BaseURL.MAIN_URL;
+import site.stellarburgers.nomoreparties.pages.AuthorizationPage;
+import site.stellarburgers.nomoreparties.pages.CreateBurgerPage;
+import site.stellarburgers.nomoreparties.resources.BaseURL;
 
 @DisplayName("Сьют на создание бургера")
 public class CreateBurgerTest extends BaseTest {
 
-    private static final CreateBurgerPage createBurger = Selenide.page(CreateBurgerPage.class);
+    private final CreateBurgerPage createBurger = Selenide.page(CreateBurgerPage.class);
 
     @Test
     @DisplayName("Проверка перехода в раздел Булки")
     public void checkGoSectionBun(){
         createBurger
-                .openPage(MAIN_URL)
+                .open(BaseURL.MAIN_URL)
                 .clickFilling()
                 .clickBun()
                 .isBunSelected();
@@ -24,16 +24,21 @@ public class CreateBurgerTest extends BaseTest {
     @DisplayName("Проверка перехода в раздел Соусы")
     public void checkGoSectionSauce(){
         createBurger
-                .openPage(MAIN_URL)
+                .open(BaseURL.MAIN_URL)
                 .clickSauce()
-                .isSauceSelected();
+                .isSauceSelected()
+                .clickPersonalAccount(AuthorizationPage.class)
+                .setValueEmail("test")
+                .clickConstructor()
+                .checkItIsMainPage()
+                .clickPersonalAccount(AuthorizationPage.class);
     }
 
     @Test
     @DisplayName("Проверка перехода в раздел Начинки")
     public void checkGoSectionFilling(){
         createBurger
-                .openPage(MAIN_URL)
+                .open(BaseURL.MAIN_URL)
                 .clickFilling()
                 .isFillingSelected();
     }

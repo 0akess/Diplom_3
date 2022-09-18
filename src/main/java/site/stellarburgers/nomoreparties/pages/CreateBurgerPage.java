@@ -1,13 +1,17 @@
-package site.stellarburgers.nomoreparties.page.object;
+package site.stellarburgers.nomoreparties.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class CreateBurgerPage {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static site.stellarburgers.nomoreparties.resources.BaseURL.MAIN_URL;
+
+public class CreateBurgerPage extends BaseMethodPage<CreateBurgerPage> {
 
     @FindBy(how = How.XPATH, using = "//*[text()='Булки']")
     private SelenideElement buttonBun;
@@ -27,12 +31,6 @@ public class CreateBurgerPage {
     @FindBy(how = How.XPATH, using = "//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/child::*[text()='Начинки']")
     private SelenideElement isSelectButtonFilling;
 
-
-    @Step("переход по ссылке")
-    public CreateBurgerPage openPage(String url){
-        Selenide.open(url);
-        return this;
-    }
 
     @Step("нажатие на кнопку Булки")
     public CreateBurgerPage clickBun(){
@@ -70,6 +68,13 @@ public class CreateBurgerPage {
     @Step("проверка перехода к разделу Начинки")
     public CreateBurgerPage isFillingSelected(){
         isSelectButtonFilling.shouldBe(Condition.visible);
+        return this;
+    }
+
+    // Вариант проверки по элементу
+    @Step("проверка успешного перехода на Главную страницу")
+    public CreateBurgerPage checkItIsMainPage(){
+        buttonFilling.shouldBe(Condition.visible);
         return this;
     }
 }
