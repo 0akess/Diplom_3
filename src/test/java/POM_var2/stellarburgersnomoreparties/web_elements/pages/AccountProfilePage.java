@@ -5,18 +5,18 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static com.codeborne.selenide.Selenide.$;
+
 public class AccountProfilePage extends BaseMethodPage<AccountProfilePage> {
 
-    @FindBy(how = How.XPATH, using = "//*[text()='Выход']")
-    private SelenideElement buttonLogOut;
-
     @Step("нажатие на кнопку Выйти")
-    public AuthorizationPage clickLogOut(){
-        buttonLogOut.click();
-        return Selenide.page(AuthorizationPage.class);
+    public AccountProfilePage clickLogOut(){
+        $(By.xpath("//*[text()='Выход']")).click();
+        return this;
     }
 
     // Вариант проверки по урлу

@@ -28,6 +28,7 @@ public class AccountProfileTest extends BaseTest {
     private AccountProfilePage profilePage = page(AccountProfilePage.class);
     private HeaderElements header = page(HeaderElements.class);
     private CreateBurgerPage create = page(CreateBurgerPage.class);
+    private AuthorizationPage authorization = page(AuthorizationPage.class);
 
     @BeforeEach
     @DisplayName("Создаем пользователя для тестов и авторизовываемся")
@@ -91,10 +92,10 @@ public class AccountProfileTest extends BaseTest {
     @DisplayName("Проверка выхода из Личного кабинета пользователя")
     public void checkLogOutProfile() {
         header
-                .open(BaseURL.MAIN_URL)
                 .clickPersonalAccount();
         profilePage
-                .clickLogOut()
+                .clickLogOut();
+        authorization
                 .checkItIsLoginPage();
     }
 }
