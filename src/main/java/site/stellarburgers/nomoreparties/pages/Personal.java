@@ -5,7 +5,4 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public interface Personal {
-
-    public Personal o();
-}
+public interface Personal {}

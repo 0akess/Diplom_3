@@ -32,7 +32,6 @@ public class AccountProfilePage extends BaseMethodPage<AccountProfilePage> imple
             String actualUrl = WebDriverRunner.url();
 
             if(!actualUrl.equals("")){
-                System.out.println("сработало");
                 break;
             }
             if(i == 9){
@@ -40,10 +39,5 @@ public class AccountProfilePage extends BaseMethodPage<AccountProfilePage> imple
             }
         }
         return this;
-    }
-
-    @Override
-    public AccountProfilePage o() {
-        return new AccountProfilePage();
     }
 }
